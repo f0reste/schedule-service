@@ -1,0 +1,11 @@
+{
+  "name": "schedule-service",
+  "version": "1.0.0",
+  "description": "Web and Telegram schedule service backed by Supabase.",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "node -e \"console.log('Static project: no build step required')\"",
+    "bot": "node bot/index.js"
+  }
+}
