@@ -97,7 +97,7 @@ async function sendGroupPicker(chatId) {
 
   await telegram("sendMessage", {
     chat_id: chatId,
-    text: "Выберите группу:",
+    text: "Выберите группу для учебного навигатора:",
     reply_markup: {
       inline_keyboard: groups.map((group) => [
         { text: group.name, callback_data: `group:${group.id}:${group.name}` }
@@ -112,7 +112,7 @@ async function answerCommand(chatId, command) {
   if (!group) {
     await telegram("sendMessage", {
       chat_id: chatId,
-      text: "Сначала выберите группу командой /start."
+      text: "Сначала закрепите группу командой /start."
     });
     await sendGroupPicker(chatId);
     return;
@@ -142,7 +142,7 @@ async function handleCallback(query) {
   await telegram("answerCallbackQuery", { callback_query_id: query.id });
   await telegram("sendMessage", {
     chat_id: query.message.chat.id,
-    text: `Группа ${group.name} выбрана. Команды: /today, /now.`
+    text: `Группа ${group.name} закреплена в навигаторе. Команды: /today, /now.`
   });
 }
 
@@ -161,7 +161,7 @@ async function handleMessage(message) {
 
   await telegram("sendMessage", {
     chat_id: message.chat.id,
-    text: "Команда не распознана. Доступны /start, /groups, /today и /now."
+    text: "Команда не распознана. Навигатор понимает /start, /groups, /today и /now."
   });
 }
 
@@ -189,5 +189,5 @@ async function poll() {
   }
 }
 
-console.log("Telegram bot started.");
+console.log("Student navigator Telegram bot started.");
 poll();
