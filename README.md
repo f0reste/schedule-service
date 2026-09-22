@@ -10,22 +10,35 @@
 - SQL-схема Supabase с таблицами `groups` и `schedule`, RLS и тестовыми данными для двух групп.
 - Демо-режим без ключей Supabase, чтобы проект можно было сразу запустить и показать.
 
+## Готовые ссылки
+
+- GitHub: https://github.com/f0reste/schedule-service
+- Issue: https://github.com/f0reste/schedule-service/issues/1
+- Pull Request: https://github.com/f0reste/schedule-service/pull/2
+- Сайт Vercel: https://schedule-service-jet.vercel.app
+- Telegram-бот: https://t.me/f0reste_schedule_service_bot
+- Supabase project: https://supabase.com/dashboard/project/nklvmvrwwxmquixofivg
+
 ## Запуск сайта
 
 ```bash
 npm run dev
 ```
 
-Откройте адрес, который покажет локальный Node-сервер. Установка npm-пакетов не нужна. Пока `src/config.js` пустой, сайт использует демо-данные.
+Откройте адрес, который покажет локальный Node-сервер. Установка npm-пакетов не нужна.
 
 ## Подключение Supabase
+
+Supabase уже подключен к сайту через публичный ключ в `src/config.js`.
+
+Если нужно развернуть проект заново:
 
 1. Создайте проект в Supabase.
 2. Откройте SQL Editor и выполните `supabase/schema.sql`.
 3. Скопируйте `.env.example` в `.env`.
 4. Для сайта заполните `SUPABASE_URL` и `SUPABASE_ANON_KEY` в `src/config.js`.
-5. Для Telegram-бота скопируйте `.env.example` в `.env` и заполните `SUPABASE_URL`, `SUPABASE_ANON_KEY`.
-6. Перезапустите сайт.
+5. Для Telegram-бота заполните `SUPABASE_URL`, `SUPABASE_ANON_KEY` и `TELEGRAM_BOT_TOKEN` в `.env`.
+6. Перезапустите сайт и бота.
 
 ## Запуск Telegram-бота
 
@@ -44,10 +57,13 @@ npm run bot
 
 ## Деплой на Vercel
 
-1. Загрузите проект на GitHub.
-2. В Vercel импортируйте репозиторий.
-3. Заполните `src/config.js` публичными Supabase-ключами перед деплоем.
-4. Для лабораторной можно деплоить ветку `feature/frontend`, затем сделать Pull Request в `main`.
+Проект опубликован на Vercel: https://schedule-service-jet.vercel.app
+
+Настройки деплоя:
+
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Framework Preset: Other
 
 ## Чек-лист сдачи
 

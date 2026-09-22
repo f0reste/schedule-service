@@ -9,38 +9,47 @@
 - Общая логика определения текущей пары, перемены и конца учебного дня.
 - Локальный сервер без обязательной установки npm-пакетов.
 
-## Что должен сделать заказчик
+## Ссылки для сдачи
 
-1. Создать репозиторий `schedule-service` на GitHub с галочкой `Add a README file`.
-2. Добавить исполнителя в `Settings -> Collaborators`.
-3. Создать Issue на разработку интерфейса чата и Telegram-бота.
-4. Создать проект Supabase.
-5. После деплоя проверить сайт, Telegram-бот и Pull Request.
+- GitHub: https://github.com/f0reste/schedule-service
+- Issue: https://github.com/f0reste/schedule-service/issues/1
+- Pull Request: https://github.com/f0reste/schedule-service/pull/2
+- Сайт Vercel: https://schedule-service-jet.vercel.app
+- Telegram-бот: https://t.me/f0reste_schedule_service_bot
+- Supabase project: https://supabase.com/dashboard/project/nklvmvrwwxmquixofivg
 
-## Что должен сделать исполнитель после получения доступа
+## Что сделано по этапам
 
-1. Принять приглашение GitHub.
-2. Склонировать репозиторий.
-3. Скопировать файлы этого проекта в репозиторий.
-4. Выполнить `supabase/schema.sql` в Supabase SQL Editor.
-5. Создать бота через `@BotFather` и записать токен в `.env`.
-6. Заполнить `SUPABASE_URL` и `SUPABASE_ANON_KEY` в `.env`.
-7. Для сайта заполнить `src/config.js` публичными ключами Supabase.
-8. Проверить локально:
+1. Создан GitHub-репозиторий `schedule-service`.
+2. Создана GitHub Issue на разработку интерфейса чата и Telegram-бота.
+3. Создан Supabase-проект с таблицами `groups` и `schedule`.
+4. Добавлены тестовые данные для двух групп: `ВЕБ-21` и `ИС-22`.
+5. Реализован Telegram-бот `@f0reste_schedule_service_bot`.
+6. Реализован веб-чат с командами `/today` и `/now`.
+7. Создана ветка `feature/frontend`, Pull Request и merge в `main`.
+8. Сайт опубликован на Vercel.
+
+## Проверенные сценарии
+
+- Сайт открывается по production-ссылке Vercel.
+- Сайт загружает конфигурацию Supabase.
+- Supabase REST API возвращает группы `ВЕБ-21` и `ИС-22`.
+- Telegram-бот показывает кнопки выбора групп из Supabase.
+- После выбора `ВЕБ-21` команда `/today` возвращает расписание на вторник.
+- Команда `/now` корректно показывает, что на сегодня пары закончились.
+
+## Локальная проверка
 
 ```bash
+npm run build
 npm run dev
 npm run bot
 ```
 
-9. Запушить ветки `main` и `feature/frontend` на GitHub.
-10. Подключить `feature/frontend` к Vercel и создать Pull Request.
-
 ## Проверка для преподавателя
 
 - В репозитории есть минимум 4 коммита.
-- Ветка `feature/frontend` содержит фронтенд.
-- Pull Request из `feature/frontend` в `main` создан.
+- Pull Request из `feature/frontend` в `main` создан и слит.
 - В Supabase есть таблицы `groups` и `schedule`.
 - При изменении предмета в Supabase данные обновляются на сайте и в Telegram-боте.
 - `/now` корректно показывает текущую пару, перемену или конец учебного дня.
