@@ -4,7 +4,7 @@
   "description": "Web and Telegram schedule service backed by Supabase.",
   "type": "module",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "node local-server.js",
     "build": "node scripts/build-static.js",
     "bot": "node bot/index.js"
   }
