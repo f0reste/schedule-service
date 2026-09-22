@@ -5,3 +5,5 @@ outputs/
 work/
 dist/
 npm-debug.log*
+
+.vercel
