@@ -92,7 +92,7 @@ async function init() {
     dataStatus.textContent = usingDemoData()
       ? "Демо-данные. Добавьте .env для Supabase."
       : "Подключено к Supabase.";
-    addMessage("Выберите группу и отправьте /today или /now. Кнопки слева делают то же самое.");
+    addMessage("Группа загружена. Используйте /today, /now или быстрые кнопки сверху.");
   } catch (error) {
     dataStatus.textContent = "Ошибка загрузки данных.";
     addMessage(error.message);

@@ -3,54 +3,92 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Schedule Service</title>
+    <title>Учебный навигатор</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./src/styles.css" />
   </head>
   <body>
-    <main class="app-shell">
-      <section class="sidebar" aria-label="Панель расписания">
+    <main class="workspace">
+      <header class="topbar">
         <div class="brand">
-          <span class="brand-mark">S</span>
+          <span class="brand-mark">SN</span>
           <div>
-            <p class="eyebrow">Supabase schedule</p>
-            <h1>Расписание</h1>
+            <p class="eyebrow">Student navigator</p>
+            <h1>Учебный навигатор</h1>
           </div>
         </div>
+        <div class="live-pill" aria-label="Текущее время">
+          <span class="pulse" aria-hidden="true"></span>
+          <span id="clock">--:--</span>
+        </div>
+      </header>
 
-        <label class="field">
+      <section class="control-strip" aria-label="Быстрые настройки">
+        <label class="control-card field">
           <span>Группа</span>
           <select id="groupSelect" aria-label="Выберите группу"></select>
         </label>
 
-        <div class="quick-actions" aria-label="Быстрые команды">
-          <button id="todayButton" class="primary-button" type="button">Сегодня</button>
-          <button id="nowButton" class="secondary-button" type="button">Сейчас</button>
-        </div>
+        <button id="todayButton" class="action-button action-today" type="button">
+          <span aria-hidden="true">/today</span>
+          <strong>Сегодня</strong>
+        </button>
+        <button id="nowButton" class="action-button action-now" type="button">
+          <span aria-hidden="true">/now</span>
+          <strong>Текущая пара</strong>
+        </button>
 
-        <div class="status-panel">
-          <p class="eyebrow">Статус данных</p>
-          <p id="dataStatus">Загрузка...</p>
+        <div class="control-card status-panel">
+          <span>Источник данных</span>
+          <strong id="dataStatus">Загрузка...</strong>
         </div>
       </section>
 
-      <section class="chat-panel" aria-label="Чат расписания">
-        <header class="chat-header">
-          <div>
-            <p class="eyebrow">Команды</p>
-            <h2>/today и /now</h2>
+      <section class="content-grid">
+        <aside class="info-rail" aria-label="Информация о сервисе">
+          <div class="info-block info-accent">
+            <p class="eyebrow">Единая база</p>
+            <h2>Supabase синхронизирует сайт и Telegram</h2>
+            <p>Изменения в расписании подтягиваются из одной таблицы для обеих точек доступа.</p>
           </div>
-          <span id="clock" class="clock">--:--</span>
-        </header>
 
-        <div id="messages" class="messages" aria-live="polite"></div>
+          <div class="lesson-cases">
+            <article>
+              <span>01</span>
+              <p>Показывает пары на выбранный день.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <p>Определяет пару, перемену или конец учебного дня.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <p>Работает с теми же командами, что и Telegram-бот.</p>
+            </article>
+          </div>
+        </aside>
 
-        <form id="commandForm" class="command-form">
-          <input id="commandInput" autocomplete="off" placeholder="Введите /today или /now" />
-          <button type="submit">Отправить</button>
-        </form>
+        <section class="chat-console" aria-label="Чат расписания">
+          <header class="chat-header">
+            <div>
+              <p class="eyebrow">Командная строка</p>
+              <h2>Спроси расписание</h2>
+            </div>
+            <div class="command-tags" aria-label="Доступные команды">
+              <code>/today</code>
+              <code>/now</code>
+            </div>
+          </header>
+
+          <div id="messages" class="messages" aria-live="polite"></div>
+
+          <form id="commandForm" class="command-form">
+            <input id="commandInput" autocomplete="off" placeholder="Введите команду" />
+            <button type="submit">Запросить</button>
+          </form>
+        </section>
       </section>
     </main>
 
