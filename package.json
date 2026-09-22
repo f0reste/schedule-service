@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node server.js",
-    "build": "node -e \"console.log('Static project: no build step required')\"",
+    "build": "node scripts/build-static.js",
     "bot": "node bot/index.js"
   }
 }
