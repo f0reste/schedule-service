@@ -4,8 +4,12 @@
   "description": "Web and Telegram schedule service backed by Supabase.",
   "type": "module",
   "scripts": {
+    "start": "node bot/index.js",
     "dev": "node local-server.js",
     "build": "node scripts/build-static.js",
     "bot": "node bot/index.js"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
